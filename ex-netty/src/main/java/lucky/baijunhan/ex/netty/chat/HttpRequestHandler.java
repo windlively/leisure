@@ -67,6 +67,7 @@ public class HttpRequestHandler extends SimpleChannelInboundHandler<FullHttpRequ
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         cause.printStackTrace();
         ctx.close();
+
     }
 
     private static void send100Continue(ChannelHandlerContext ctx){

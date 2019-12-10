@@ -4,7 +4,6 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.embedded.EmbeddedChannel;
 import lucky.baijunhan.ex.netty.FixedLengthFrameDecoder;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 public class FixedLengthFrameDecoderTest {
@@ -23,7 +22,6 @@ public class FixedLengthFrameDecoderTest {
         ByteBuf read = channel.readInbound();
         assertEquals(buf.readSlice(3),read);
         read.release();
-
         read = channel.readInbound();
         assertEquals(buf.readSlice(3),read);
         read.release();
