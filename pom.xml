@@ -7,9 +7,10 @@
     <groupId>lucky.baijunhan</groupId>
     <artifactId>leisure</artifactId>
     <packaging>pom</packaging>
-    <version>1.0</version>
+    <version>Uranus</version>
     <modules>
         <module>ex-netty</module>
+        <module>algorithm</module>
     </modules>
     <build>
         <plugins>
