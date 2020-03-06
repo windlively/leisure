@@ -1,0 +1,20 @@
+
+logging:
+  file:
+    path: /Users/baijh/data/logs/file-server
+file-server:
+  base-dir: /Users/baijh/data/file-server
+server:
+  servlet:
+    context-path: /file-server
+spring:
+  servlet:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+      file-size-threshold: 2MB
+  application:
+    name: file-server
+  http:
+    encoding:
+      force: true

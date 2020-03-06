@@ -1,0 +1,52 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="zh_CN">
+<header>
+  <title>index</title>
+  <link th:href="@{/assets/css/animate.min.css}" rel="stylesheet">
+  <style>
+    table {
+      border-spacing: 30px 0;
+    }
+  </style>
+</header>
+<body>
+<div style="margin-left: 20px;font-size: 14px">
+  <h2 th:text="'index of: &nbsp;' + ${index}"></h2>
+  <span style="font-size: 14px;color: red" th:if="${not #strings.isEmpty(error)}" th:text="${error}"></span>
+  <span style="font-size: 14px" th:if="${not #strings.isEmpty(message)}" th:text="${message}"></span>
+  <table>
+    <thead>
+    <tr style="text-align: left">
+      <th>name</th>
+      <th>last modified</th>
+      <th>spaces</th>
+      <th>op</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="file : ${childs}" class="animated flipInX">
+      <td th:if="${not file.dir}">
+        &bull;&nbsp;&nbsp;<a th:href="${file.reqPath}" target="_blank" th:text="${file.name}"></a>
+      </td>
+      <td th:if="${file.dir}">
+        -&nbsp;&nbsp;<a  th:href="${file.reqPath}" th:text="${file.name}"></a>
+      </td>
+      <td>
+        <span th:text="${#dates.format(file.lastModified)}"></span>
+      </td>
+      <td>
+        <span th:text="${file.spaces} + 'Kb'"></span>
+      </td>
+      <td th:if="${not file.dir}">
+        <a th:href="${'/file-server/delete' + #strings.substring(file.reqPath, #strings.length('/file-server/files'))}">delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script>
+
+</script>
+</body>
+</html>

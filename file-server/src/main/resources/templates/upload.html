@@ -1,0 +1,29 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<header>
+  <title>upload</title>
+</header>
+<body style="width: 100%;height: 100vh; display: flex; justify-content: center;align-items: center">
+<form th:action="@{/one-file}" method="post" enctype="multipart/form-data">
+  <div>
+    <input type="file" name="file" placeholder=""/>
+  </div>
+  <div style="font-size: 14px">
+    <label>
+      <span style="font-size: 12px">上传路径: </span>
+      <input type="text" name="path"/>
+    </label>
+  </div>
+  <div>
+    <label>
+      <span style="font-size: 12px">不保留原始文件名: </span>
+      <input type="checkbox" value="false" name="saveAsOriginalName"/>
+    </label>
+  </div>
+  <div>
+    <button type="submit">submit</button>
+  </div>
+</form>
+</body>
+</html>
