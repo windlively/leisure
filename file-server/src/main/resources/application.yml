@@ -1,9 +1,9 @@
 
 logging:
   file:
-    path: /Users/baijh/data/logs/file-server
+    path: /data/logs/file-server
 file-server:
-  base-dir: /Users/baijh/data/file-server
+  base-dir: /data/file-server
 server:
   servlet:
     context-path: /file-server

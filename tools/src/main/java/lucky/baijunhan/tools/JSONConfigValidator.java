@@ -129,7 +129,6 @@ import java.util.stream.Stream;
  * 	"_id": "sync_config"
  * }
  */
-@Slf4j
 public class JSONConfigValidator {
 
     // 模板文件

@@ -1,6 +1,6 @@
 package lucky.baijunhan.fileserver.controller;
 
-import lucky.baijunhan.entity.HttpResult;
+import lucky.baijunhan.fileserver.model.HttpResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 

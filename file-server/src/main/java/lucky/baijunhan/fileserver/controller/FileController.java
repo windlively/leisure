@@ -1,8 +1,8 @@
 package lucky.baijunhan.fileserver.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import lucky.baijunhan.entity.HttpResult;
 import lucky.baijunhan.fileserver.model.FileModel;
+import lucky.baijunhan.fileserver.model.HttpResult;
 import lucky.baijunhan.fileserver.service.FileService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,16 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import static lucky.baijunhan.fileserver.utils.Utils.makePath;
 

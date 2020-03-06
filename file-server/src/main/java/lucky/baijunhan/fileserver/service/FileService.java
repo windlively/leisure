@@ -1,8 +1,7 @@
 package lucky.baijunhan.fileserver.service;
 
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import lucky.baijunhan.entity.HttpResult;
+import lucky.baijunhan.fileserver.model.HttpResult;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,7 +11,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 import static lucky.baijunhan.fileserver.utils.Utils.makePath;
 
