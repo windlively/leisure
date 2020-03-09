@@ -22,13 +22,13 @@ public class FileService {
     public String baseDir;
 
     public HttpResult<String> saveOneFile(MultipartFile multipartFile, String path, boolean saveAsOriginalName) {
-        var originalName = multipartFile.getOriginalFilename();
+        String originalName = multipartFile.getOriginalFilename();
         assert originalName != null;
         String fileName;
         if (saveAsOriginalName) {
             fileName = originalName;
         } else {
-            var fileType = "";
+            String fileType = "";
             if (originalName.lastIndexOf(".") == -1) {
                 fileType = ".undefined";
 //            try {
@@ -66,10 +66,7 @@ public class FileService {
             try {
                 multipartFile.transferTo(file);
                 log.info("save file: [{}]", file.getAbsolutePath());
-                return HttpResult.<String>builder()
-                        .message("上传成功")
-                        .data(makePath("/file-server/files", path, fileName))
-                        .build();
+                return HttpResult.SUCCESS("上传成功",makePath("/file-server/files", path, fileName));
             } catch (IOException e) {
                 log.error(e.toString(), e);
                 e.printStackTrace();
