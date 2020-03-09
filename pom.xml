@@ -7,7 +7,7 @@
     <groupId>lucky.baijunhan</groupId>
     <artifactId>leisure</artifactId>
     <packaging>pom</packaging>
-    <version>Uranus</version>
+    <version>uranus</version>
     <modules>
         <module>ex-netty</module>
         <module>algorithm</module>
@@ -26,6 +26,18 @@
                     <target>11</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <version>2.2.2.RELEASE</version>
+            </plugin>
         </plugins>
     </build>
 
@@ -41,4 +53,11 @@
         </dependencies>
     </dependencyManagement>
 
+    <repositories>
+        <repository>
+            <id>aliyunmaven</id>
+            <name>阿里云公共仓库</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+    </repositories>
 </project>
