@@ -12,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Slf4j
 public class FileServerApplication implements WebMvcConfigurer {
 
+    // 文件的本地磁盘存储路径
     @Value("${file-server.base-dir}")
     private String baseDir;
 
@@ -30,11 +31,11 @@ public class FileServerApplication implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        //就是说 url 中出现 resourceHandler 匹配时，则映射到 location 中去,location 相当于虚拟路径
         //映射本地文件时，开头必须是 file:/// 开头，表示协议
         log.info("base dir: {}", baseDir);
         registry.addResourceHandler("/download/**")
                 .addResourceLocations("file:///" + (baseDir.endsWith("/") ? baseDir : baseDir + "/"));
+        // 静态资源(thymeleaf)文件
         registry.addResourceHandler("/assets/**").addResourceLocations("classpath:/assets/");
     }
 }
