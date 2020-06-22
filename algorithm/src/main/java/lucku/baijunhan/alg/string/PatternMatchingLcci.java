@@ -48,7 +48,7 @@ public class PatternMatchingLcci {
             }
             int lV = v.length;
             if(countA == 0 && countB == 0) return lV == 0;
-            if(value.equals("")) return countA == 0 && countB != 0 || countA !=0 && countB == 0;
+            if(value.equals("")) return countA == 0 || countB == 0;
             if(countA==1 || countB == 1) return true;
             if(countA == 0 || countB == 0) return match(v, countB == 0 ? countA : countB);
             char firstPCh = p[0];
@@ -82,45 +82,44 @@ public class PatternMatchingLcci {
             return true;
         }
 
-        boolean match(int i, int countA, int countB, char[] v, char[] p, char fCh){
-            int lA = i + 1;
+        boolean match(int i, int countFirstCh, int countAnotherCh, char[] v, char[] p, char firstCh){
+            int lFirstCh = i + 1;
             int lV = v.length;
-            int lB = (lV - countA * lA) / countB;
-            if(!(countA * lA + countB * lB == lV))
+            int lAnotherCh = (lV - countFirstCh * lFirstCh) / countAnotherCh;
+            if(!(countFirstCh * lFirstCh + countAnotherCh * lAnotherCh == lV))
                 return false;
-            char[] aStr = Arrays.copyOfRange(v, 0, lA);
-            char[] bStr = new char[Math.max(lB, 0)];
+            char[] aStr = Arrays.copyOfRange(v, 0, lFirstCh);
+            char[] bStr = new char[Math.max(lAnotherCh, 0)];
             int vIndex = 0;
             boolean initB = false;
             for(char c : p){
-                if(c == fCh){
-                    if(vIndex + lA > lV){
+                if(c == firstCh){
+                    if(vIndex + lFirstCh > lV){
                         return false;
                     }else{
-                        for(int aI = 0; aI < lA; vIndex++, aI ++){
+                        for(int aI = 0; aI < lFirstCh; vIndex++, aI ++){
                             if(aStr[aI] != v[vIndex]){
                                 return false;
                             }
                         }
                     }
                 }else{
-                    if(vIndex + lB > lV)
+                    if(vIndex + lAnotherCh > lV)
                         return false;
                     else if(!initB){
-                        for(int bI = 0; bI < lB; vIndex ++, bI ++){
+                        for(int bI = 0; bI < lAnotherCh; vIndex ++, bI ++){
                             bStr[bI] = v[vIndex];
                         }
                         initB = true;
                     }else{
-                        for(int bI = 0; bI < lB; vIndex ++, bI ++){
+                        for(int bI = 0; bI < lAnotherCh; vIndex ++, bI ++){
                             if(bStr[bI] != v[vIndex]){
                                 return false;
                             }
                         }
                     }
                 }
-            }
-            return true;
+            }            return true;
         }
     }
 
