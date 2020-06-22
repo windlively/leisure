@@ -1,7 +1,10 @@
 package lucku.baijunhan.alg.array;
 
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并且使皇后彼此之间不能相互攻击。
@@ -51,6 +54,8 @@ public class N_Queens {
     }
 
     public void search(int queue){
+        char[] c = new char[12];
+        int[] t = {1, 3};
 
     }
 
