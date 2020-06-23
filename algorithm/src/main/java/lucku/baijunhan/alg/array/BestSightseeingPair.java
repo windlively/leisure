@@ -25,6 +25,7 @@ package lucku.baijunhan.alg.array;
 public class BestSightseeingPair {
 
     public static void main(String[] args) {
+
         System.out.println(new Solution().maxScoreSightseeingPair(new int[]{8, 1, 5, 2, 6}));
     }
 
