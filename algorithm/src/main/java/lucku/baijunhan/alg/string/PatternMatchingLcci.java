@@ -119,7 +119,8 @@ public class PatternMatchingLcci {
                         }
                     }
                 }
-            }            return true;
+            }
+            return true;
         }
     }
 
