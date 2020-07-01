@@ -2,7 +2,19 @@ package lucku.baijunhan.alg.tree;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-
+/**
+ * 序列化方案:
+ *   例如一颗二叉树:
+ *         1
+ *        / \
+ *       9   2
+ *      / \
+ *     8  10
+ *   序列化后为:
+ *   1<*9<**8>**10>*2
+ *   其中, ‘<’代表左子树, '>'代表右子树, '*'的个数代表层数
+ *
+ */
 public class SerializeAndDeserializeBinaryTree {
 
 

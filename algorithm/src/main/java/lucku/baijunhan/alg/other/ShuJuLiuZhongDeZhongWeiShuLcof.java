@@ -1,5 +1,6 @@
 package lucku.baijunhan.alg.other;
 
+import java.util.Deque;
 import java.util.PriorityQueue;
 
 /**
