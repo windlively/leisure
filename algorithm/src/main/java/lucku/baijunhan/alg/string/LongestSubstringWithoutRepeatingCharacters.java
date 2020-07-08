@@ -35,7 +35,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
 
     static class Solution {
-        public synchronized int lengthOfLongestSubstring(String s) {
+        public int lengthOfLongestSubstring(String s) {
             int l = 0;
                 int r = 0;
             boolean[] tmp = new boolean[256];
