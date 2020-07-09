@@ -1,8 +1,7 @@
 package lucku.baijunhan.alg.array;
 
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -36,32 +35,74 @@ import java.util.stream.Stream;
 
 public class N_Queens {
 
-    int[] queens;
-    int[] row;
-    int[] mLine;
-    int[] sLine;
-
-    byte[][] chessboard;
-
     public static void main(String[] args) {
-
+        System.out.println(new Solution().solveNQueens(3));
     }
 
-    public List<List<String>> solveNQueens(int n) {
-        chessboard = new byte[n][n];
+    static class Solution {
+        public List<List<String>> solveNQueens(int n) {
+            // if(n < 4) return Collections.emptyList();
+            List<List<String>> list = new ArrayList<>();
+            search(list, new boolean[n][n], 0);
+            return list;
+        }
 
-        return null;
+        public void search(List<List<String>> list, boolean[][] board, int row){
+            if(row == board.length){
+                List<String> ls = new ArrayList<>(board.length);
+                for( boolean[] arr: board){
+                    StringBuilder s = new StringBuilder();
+                    for (boolean v : arr){
+                        s.append(v ? "Q" : ".");
+                    }
+                    ls.add(s.toString());
+                }
+                list.add(ls);
+                return;
+            }
+            for(int i = 0; i < board[0].length; i++){
+                if(check(board, row, i)){
+                    board[row][i] = true;
+                    search(list, board, row + 1);
+                    board[row][i] = false;
+                }
+            }
+        }
+
+        private static boolean check(boolean[][] board, int i, int j){
+            int row = board.length;
+            int col = board[0].length;
+            int base;
+            for(int m = 0; m < row; m ++){
+
+                if(m == i){
+                    for(int k = 0; k < col; k ++)
+                        if(board[m][k]) return false;
+                    continue;
+                }
+
+                base = Math.abs(m - i);
+                int jL = j - base;
+                int jR = j + base;
+
+                if(jL >= 0 && jL < col && board[m][jL]
+                   || jR >= 0 && jR < col && board[m][jR]
+                   || board[m][j]){
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 
-    public void search(int queue){
-        char[] c = new char[12];
-        int[] t = {1, 3};
-
+    static String out(boolean[][] board){
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < board.length; i ++){
+            for (int j = 0; j < board[0].length; j++) {
+                stringBuilder.append(board[i][j] ? " * " : " o ");
+            }
+            stringBuilder.append("\n");
+        }
+        return stringBuilder.toString();
     }
-
-    public void putChess(byte row){
-
-    }
-
-
 }

@@ -59,7 +59,6 @@ public class ReSpaceLcci {
                         break;
                     node = child;
                     if(node.leaf){
-                        System.out.println(j);
                         dp[i] = Math.min(dp[i], dp[j]);
                     }
                 }
