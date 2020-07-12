@@ -1,4 +1,4 @@
-package lucku.baijunhan.alg.string;
+package lucku.baijunhan.alg.dp;
 
 /**
  *

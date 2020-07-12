@@ -36,12 +36,12 @@ import java.util.stream.Stream;
 public class N_Queens {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solveNQueens(3));
+        System.out.println(out(new Solution().solveNQueens(5)));
     }
 
     static class Solution {
         public List<List<String>> solveNQueens(int n) {
-            // if(n < 4) return Collections.emptyList();
+            if(n < 0) return Collections.emptyList();
             List<List<String>> list = new ArrayList<>();
             search(list, new boolean[n][n], 0);
             return list;
@@ -82,8 +82,8 @@ public class N_Queens {
                 }
 
                 base = Math.abs(m - i);
-                int jL = j - base;
-                int jR = j + base;
+                int jL = j - base; // 左上方/左下方列索引
+                int jR = j + base; // 右上方/右下方列索引
 
                 if(jL >= 0 && jL < col && board[m][jL]
                    || jR >= 0 && jR < col && board[m][jR]
@@ -95,14 +95,14 @@ public class N_Queens {
         }
     }
 
-    static String out(boolean[][] board){
+    public static String out(List<List<String>> list){
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < board.length; i ++){
-            for (int j = 0; j < board[0].length; j++) {
-                stringBuilder.append(board[i][j] ? " * " : " o ");
-            }
+        list.forEach(ls -> {
+            stringBuilder.append(ls.stream().map(cs ->
+                    cs.replace(".", " o ").replace("Q", " * ").concat("\n"))
+                    .reduce(String::concat).orElse(""));
             stringBuilder.append("\n");
-        }
+        });
         return stringBuilder.toString();
     }
 }
