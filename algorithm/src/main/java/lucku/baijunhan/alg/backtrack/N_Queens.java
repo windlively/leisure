@@ -1,4 +1,4 @@
-package lucku.baijunhan.alg.array;
+package lucku.baijunhan.alg.backtrack;
 
 
 import java.util.*;

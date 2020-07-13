@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 
 public class Main {
 
+static     char ch = '\0';
     public static void main(String[] args) {
         Map<String, Integer> map = Stream.of(new String[]{"a","a","b,","c", "c", "c"})
                 .collect(Collectors.toMap(a -> a, a -> 1, (o, n) -> o + 1));
@@ -22,7 +23,7 @@ public class Main {
                     o.addAll(n);
                     return o;
                 }));
-
+        System.out.println(ch);
     }
 
 }
