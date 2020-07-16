@@ -1,6 +1,7 @@
 package lucku.baijunhan.alg.test;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -23,7 +24,7 @@ static     char ch = '\0';
                     o.addAll(n);
                     return o;
                 }));
-        System.out.println(ch);
+        
     }
 
 }
