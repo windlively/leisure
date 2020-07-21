@@ -15,7 +15,7 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
     @Override
     public void channelRead0(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
-        System.out.println("Client received: " + byteBuf.toString(CharsetUtil.UTF_8));
+        System.out.println("127.0.0.1" + byteBuf.toString(CharsetUtil.UTF_8));
     }
 
     @Override

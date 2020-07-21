@@ -3,28 +3,66 @@ package lucku.baijunhan.alg.test;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Scanner;
 
-public class Main {
+public class Main{
 
-static     char ch = '\0';
     public static void main(String[] args) {
-        Map<String, Integer> map = Stream.of(new String[]{"a","a","b,","c", "c", "c"})
-                .collect(Collectors.toMap(a -> a, a -> 1, (o, n) -> o + 1));
-        System.out.println(map);
 
-        Map<String, List<String>> map2 = Stream.of(new String[]{"a","a","b,","c", "c", "c"})
-                .collect(Collectors.toMap(a -> a, a -> {
-                    List<String> l = new ArrayList<>();
-                    l.add(a);
-                    return l;
-                }, (o, n) -> {
-                    o.addAll(n);
-                    return o;
-                }));
-        
+        Scanner scanner = new Scanner(System.in);
+        int count = scanner.nextInt();
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            String next = scanner.next();
+            list.add(next);
+        }
+        List<String> repair = repair(list);
+        for (String s : repair) {
+            System.out.println(s);
+        }
+
+
     }
 
+    private static List<String> repair(List<String> list){
+        List<String> result = new ArrayList<>();
+        for (String str : list) {
+            char[] chars = str.toCharArray();
+            int countA = 1;
+            int countB = 0;
+            for (int i = 1; i < chars.length; i++) {
+                if(countA == 2 && countB == 1 && chars[i] == chars[i-1]){
+                    chars[i-1] = '\0';
+                    countA = 2;
+                    countB = 1;
+                }
+                else if(countA == 2 && chars[i] == chars[i-1]){
+                    chars[i-1] = '\0';
+                    countA = 2;
+                    countB = 0;
+                }
+                else{
+                    if(chars[i] == chars[i-1]){
+                        if(countA < 2){
+                            countA++;
+                        }
+                        else if(countA == 2 && countB < 2){
+                            countB++;
+                        }
+                    }
+                    else{
+                        if(countA == 2){
+                            countB++;
+                        }
+                        else{
+                            countA = 1;
+                            countB = 0;
+                        }
+                    }
+                }
+            }
+            result.add(new String(chars));
+        }
+        return result;
+    }
 }
