@@ -21,7 +21,6 @@ public class Main{
             System.out.println(s);
         }
 
-
     }
 
     private static List<String> repair(List<String> list){
