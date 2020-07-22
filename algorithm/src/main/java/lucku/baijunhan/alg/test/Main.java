@@ -1,25 +1,24 @@
 package lucku.baijunhan.alg.test;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main{
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        int count = scanner.nextInt();
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            String next = scanner.next();
-            list.add(next);
-        }
-        List<String> repair = repair(list);
-        for (String s : repair) {
-            System.out.println(s);
-        }
+        System.out.println(System.getProperties());
+
+//        Scanner scanner = new Scanner(System.in);
+//        int count = scanner.nextInt();
+//        List<String> list = new ArrayList<>();
+//        for (int i = 0; i < count; i++) {
+//            String next = scanner.next();
+//            list.add(next);
+//        }
+//        List<String> repair = repair(list);
+//        for (String s : repair) {
+//            System.out.println(s);
+//        }
 
     }
 
