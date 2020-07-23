@@ -62,27 +62,27 @@ public class FindDuplicateFileInSystem {
                 char[] cs = path.toCharArray();
                 int i = 0;
                 // 寻找文件夹路径
-                String dir = "";
-                while(cs[i] != ' ') dir += cs[i++];
+                StringBuilder dir = new StringBuilder();
+                while(cs[i] != ' ') dir.append(cs[i++]);
                 // 跳过空格
                 i ++;
                 // 加上分隔符
-                dir += '/';
+                dir.append('/');
                 // 查找文件
                 do {
                     // 获取文件名称
-                    String fileName = "";
-                    while (cs[i] != '(') fileName += cs[i++];
+                    StringBuilder fileName = new StringBuilder();
+                    while (cs[i] != '(') fileName.append(cs[i++]);
                     // 跳过'('
                     i++;
                     // 获取文件内容
-                    String content = "";
-                    while (cs[i] != ')') content += cs[i++];
+                    StringBuilder content = new StringBuilder();
+                    while (cs[i] != ')') content.append(cs[i++]);
                     // 跳过')'和空格
                     i += 2;
                     // 将文件路径保存到HashMap
-                    List<String> list = map.computeIfAbsent(content, k -> new ArrayList<>());
-                    list.add(dir + fileName);
+                    List<String> list = map.computeIfAbsent(content.toString(), k -> new ArrayList<>());
+                    list.add(dir.toString() + fileName);
                 } while (i < cs.length);
             }
             // 过滤掉长度等于1的, 因为长度为1说明没有重复文件
