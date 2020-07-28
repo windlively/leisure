@@ -1,12 +1,15 @@
 package lucku.baijunhan.alg.test;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main{
 
     public static void main(String[] args) {
 
-        System.out.println(System.getProperties());
+        //System.out.println(System.getProperties());
+
 
 //        Scanner scanner = new Scanner(System.in);
 //        int count = scanner.nextInt();
@@ -19,8 +22,11 @@ public class Main{
 //        for (String s : repair) {
 //            System.out.println(s);
 //        }
-
+        Matcher matcher = PATTERN.matcher("et set -h");
+        while (matcher.find())
+            System.out.println(matcher.group());
     }
+    private final static Pattern PATTERN = Pattern.compile("(?<=^et\\s-h)(\\s(-s|-l))?");
 
     private static List<String> repair(List<String> list){
         List<String> result = new ArrayList<>();
