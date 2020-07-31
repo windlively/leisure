@@ -1,4 +1,4 @@
-package lucku.baijunhan.alg.tree;
+package lucku.baijunhan.alg.structure;
 /**
  * Definition for a binary tree node.
  */

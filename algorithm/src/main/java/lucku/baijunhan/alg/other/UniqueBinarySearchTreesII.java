@@ -1,6 +1,6 @@
 package lucku.baijunhan.alg.other;
 
-import lucku.baijunhan.alg.tree.TreeNode;
+import lucku.baijunhan.alg.structure.TreeNode;
 
 import java.util.ArrayList;
 import java.util.Collections;

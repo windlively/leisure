@@ -1,6 +1,6 @@
 package lucku.baijunhan.alg.dp;
 
-import lucku.baijunhan.alg.tree.TreeNode;
+import lucku.baijunhan.alg.structure.TreeNode;
 
 /**
  * 337. 打家劫舍 III

@@ -1,5 +1,7 @@
 package lucku.baijunhan.alg.tree;
 
+import lucku.baijunhan.alg.structure.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
