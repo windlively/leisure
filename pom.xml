@@ -15,6 +15,7 @@
         <module>tools</module>
         <module>common</module>
         <module>file-server</module>
+        <module>scripts</module>
     </modules>
     <build>
         <plugins>
