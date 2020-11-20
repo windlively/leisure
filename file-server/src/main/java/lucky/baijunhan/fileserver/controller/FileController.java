@@ -13,7 +13,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -95,19 +98,39 @@ public class FileController {
     }
 
     @RequestMapping("/delete/**")
-    public Object delete(HttpServletRequest request){
+    public Object delete(HttpServletRequest request) throws IOException {
         ModelAndView mv  = new ModelAndView();
         String reqPath = request.getServletPath().substring("/delete".length());
         if(reqPath.equals(""))
             reqPath = "/";
+        if(reqPath.equals("/")){
+            mv.addObject("error", "root dir could not delete!");
+            return mv;
+        }
         String filePath = makePath(fileService.baseDir, reqPath);
         File file = new File(filePath);
+        if(file.isDirectory()){
+
+            Files.walkFileTree(file.toPath(), new SimpleFileVisitor<Path>(){
+                @Override
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attributes) throws IOException {
+                    Files.delete(file);
+                    return FileVisitResult.CONTINUE;
+                }
+
+                @Override
+                public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+                    Files.delete(dir);
+                    return FileVisitResult.CONTINUE;
+                }
+            });
+        }
         if(file.delete()) {
             log.info("delete file: {}", filePath);
             mv.addObject("message", "delete file: " + reqPath + " success");
+        } else {
+            mv.addObject("error", "file: " + reqPath + " delete failed!");
         }
-         else
-             mv.addObject("error", "file: " + reqPath + " delete failed!");
         String parentDir = reqPath.substring(0, reqPath.lastIndexOf('/'));
         mv.setViewName("redirect:" + new String(makePath("/files", parentDir).getBytes(StandardCharsets.UTF_8)
                 , StandardCharsets.ISO_8859_1));

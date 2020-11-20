@@ -36,9 +36,9 @@
         <span th:text="${#dates.format(file.lastModified)}"></span>
       </td>
       <td>
-        <span th:text="${file.spaces} + 'Kb'"></span>
+        <span th:text="${#numbers.formatDecimal(file.spaces/1024.0d/1024.0d, 1, 2)} + 'Mb'"></span>
       </td>
-      <td th:if="${not file.dir}">
+      <td th:if="${file.getName() != '/' and file.getName() != '..'}">
         <a th:href="${'/file-server/delete' + #strings.substring(file.reqPath, #strings.length('/file-server/files'))}">delete</a>
       </td>
     </tr>
