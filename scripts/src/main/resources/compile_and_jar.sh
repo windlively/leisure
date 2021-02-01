@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # class_name=$1
 dir=$1

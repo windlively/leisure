@@ -1,9 +1,11 @@
 package ink.andromeda.leisure.scripts;
 
-import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
