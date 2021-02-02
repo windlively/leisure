@@ -39,11 +39,8 @@ import java.util.*;
  */
 public class WordLadder {
 
-
     static class Solution {
-
         public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-            Map<String, List<String>> graph = new HashMap<>();
             Queue<String> queue = new LinkedList<>();
             queue.offer(beginWord);
             List<String> vis = new ArrayList<>();
